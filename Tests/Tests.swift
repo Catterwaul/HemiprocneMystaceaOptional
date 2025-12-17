@@ -3,6 +3,20 @@ import Testing
 import Thrappture
 
 struct OptionalTests {
+  @Test func `== operator`() throws {
+    let optional: Optional = (1, 2.0, "3")
+    #expect(optional == optional)
+    
+    var copy = optional
+    copy?.1 = 0
+    #expect(optional != copy)
+    
+    copy = nil
+    #expect(copy == copy)
+    
+    #expect(optional != copy)
+  }
+  
   @Test func filter() throws {
     let optional: Optional = 1
     #expect(optional.filter { $0 > 0 } == 1)
