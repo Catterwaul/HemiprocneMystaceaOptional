@@ -4,23 +4,21 @@ import Thrappture
 
 struct OptionalTests {
   @Test func `== operator`() throws {
-    let optional: Optional = (1, 2.0, "3")
+    let values = (1, 2.0, "3")
+    var optional: Optional = values
+    #expect(optional == values)
+    
+    optional?.1 = 0
+    #expect(optional != values)
+    
+    optional = nil
     #expect(optional == optional)
-    
-    var copy = optional
-    copy?.1 = 0
-    #expect(optional != copy)
-    
-    copy = nil
-    #expect(copy == copy)
-    
-    #expect(optional != copy)
+    #expect(optional != values)
   }
   
-  @Test func filter() throws {
-    let optional: Optional = 1
-    #expect(optional.filter { $0 > 0 } == 1)
-    #expect(optional.filter { $0 > 1 } == nil)
+  @Test func `Mapped`() {
+    let values = (1, 2.0, "3")
+    #expect(type(of: values as _?.Mapped) == (Int?, Double?, String?).self)
   }
 
   @Test func zip() throws {
@@ -31,12 +29,18 @@ struct OptionalTests {
     // and this block should not be necessary, but
     // https://github.com/apple/swift/issues/74425
     do {
-      var optionalJenies: (_?, _?) = jenies
+      var optionalJenies = jenies as _?.Mapped
       optionalJenies.1 = nil
       let jenies = optionalJenies
       #expect(throws: (String, String)?.Nil.self) {
         try _?.zip(jenies).get()
       }
     }
+  }
+    
+  @Test func filter() throws {
+    let optional: Optional = 1
+    #expect(optional.filter { $0 > 0 } == 1)
+    #expect(optional.filter { $0 > 1 } == nil)
   }
 }

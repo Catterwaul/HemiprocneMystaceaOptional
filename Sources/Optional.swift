@@ -2,6 +2,12 @@ import Thrappture
 
 // MARK: - public
 public extension Optional {
+  /// A type with all values wrapped in an additional layer of `Optional`.
+  ///
+  /// - Note: `Never` is for namespacing within `Optional`. The actual `Wrapped` doesn't matter.
+  typealias Mapped<each _Wrapped> = (repeat (each _Wrapped)?)
+  where Wrapped == Never
+  
   /// Equate tuples of arbitrary count.
   @inlinable static func == <each _Wrapped: Equatable>(
     _ optional0: Self, _ optional1: Self
