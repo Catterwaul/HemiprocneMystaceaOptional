@@ -7,7 +7,7 @@
       "location" : "https://github.com/swiftlang/swift-docc-plugin",
       "state" : {
         "branch" : "main",
-        "revision" : "8357c7750dbed168f245f46def146b454d371b1a"
+        "revision" : "647c708be89f834fa6a6d4945442793a77ddf5b6"
       }
     },
     {
@@ -25,7 +25,7 @@
       "location" : "https://github.com/Catterwaul/Thrappture",
       "state" : {
         "branch" : "main",
-        "revision" : "f7822e6879b8ea3350b0feed3e7e3e80740e7a3f"
+        "revision" : "cc102d9b1e57127c73c2b83fbf5f254c3eb9fd28"
       }
     }
   ],

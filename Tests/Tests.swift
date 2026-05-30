@@ -33,7 +33,7 @@ struct OptionalTests {
       optionalJenies.1 = nil
       let jenies = optionalJenies
       #expect(throws: (String, String)?.Nil.self) {
-        try _?.zip(jenies).get()
+        try _?.zip(jenies).value
       }
     }
   }
